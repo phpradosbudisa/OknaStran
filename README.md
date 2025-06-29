@@ -1,171 +1,102 @@
-# MVZ-PVCOKNAINVRATA.SI - PVC Windows and Doors Website
+# Okna Stran - PVC Windows and Doors Website
 
-A modern, responsive website for a Slovenian PVC windows and doors company with an interactive pricing calculator.
+A modern, responsive website for a Slovenian PVC windows and doors company. Built with HTML, CSS, and JavaScript.
 
 ## 🌟 Features
 
-### 🏠 Modern Design
-- **Responsive Layout**: Works perfectly on desktop, tablet, and mobile devices
-- **Modern UI/UX**: Clean, professional design with smooth animations
-- **Slovenian Language**: Complete Slovenian translation throughout the site
-- **Interactive Elements**: Hover effects, smooth scrolling, and engaging animations
+- **Modern Design**: Clean, professional interface with smooth animations
+- **Interactive Calculator**: Multi-step form for window and door pricing
+- **PDF Generation**: Automatic quote generation and email delivery
+- **Responsive Layout**: Works perfectly on all devices
+- **Slovenian Language**: Localized content for Slovenian market
 
-### 🧮 Interactive Pricing Calculator
-- **Real-time Calculation**: Instantly calculates prices as users input data
-- **Multiple Options**: 
-  - Window types (fixed, single, double, triple)
-  - Glass types (single, double, triple)
-  - Frame colors (white, brown, black, wood finish)
-  - Window dimensions and quantity
-- **Detailed Breakdown**: Shows material cost, installation cost, and total price
-- **Professional Pricing**: Based on realistic market rates per square meter
+## 🚀 Live Demo
 
-### 📱 Mobile-First Design
-- **Hamburger Menu**: Collapsible navigation for mobile devices
-- **Touch-Friendly**: Optimized for touch interactions
-- **Fast Loading**: Optimized performance across all devices
+Visit the live website: [https://yourusername.github.io/OknaStran](https://yourusername.github.io/OknaStran)
 
-### 📧 Contact Features
-- **Contact Form**: Professional contact form with validation
-- **Company Information**: Complete business details and working hours
-- **Interactive Notifications**: Success/error messages for form submissions
+## 📁 Project Structure
 
-## 🚀 Getting Started
-
-### Prerequisites
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- No server setup required - runs entirely in the browser
-
-### Installation
-1. Clone or download the project files
-2. Open `index.html` in your web browser
-3. The website is ready to use!
-
-### File Structure
 ```
-MVZ-PVCOKNAINVRATA.SI/
+OknaStran/
 ├── index.html          # Main HTML file
-├── styles.css          # CSS styles and responsive design
+├── styles.css          # CSS styles and animations
 ├── script.js           # JavaScript functionality
-└── README.md           # This file
+└── README.md           # Project documentation
 ```
 
-## 💰 Pricing Calculator Details
+## 🛠️ Technologies Used
 
-The calculator uses a sophisticated pricing model based on:
+- **HTML5**: Semantic markup
+- **CSS3**: Modern styling with CSS Grid, Flexbox, and animations
+- **JavaScript**: Interactive functionality and form handling
+- **jsPDF**: PDF generation for quotes
+- **Font Awesome**: Icons
+- **Google Fonts**: Typography
 
-### Base Prices (per m²)
-- **Fixed Window**: 80€
-- **Single Window**: 120€
-- **Double Window**: 160€
-- **Triple Window**: 200€
+## 📱 Features Overview
 
-### Glass Type Multipliers
-- **Single Glass**: 1.0x
-- **Double Glass**: 1.3x
-- **Triple Glass**: 1.6x
+### Home Section
+- Hero section with animated 3D window/door models
+- Trust indicators and company highlights
+- Call-to-action buttons
 
-### Frame Color Multipliers
-- **White**: 1.0x
-- **Brown**: 1.1x
-- **Black**: 1.15x
-- **Wood Finish**: 1.25x
+### About Section
+- Company story and experience
+- Feature cards with hover effects
+- Visual grid layout
 
-### Installation Cost
-- **25€ per m²** for professional installation
+### Interactive Calculator
+- Multi-step form process
+- Product selection (windows, doors, balcony doors)
+- Real-time price calculation
+- PDF quote generation
+- Email delivery system
 
-## 🎨 Design Features
+### Contact Section
+- Company information
+- Interactive map
+- Contact details
 
-### Color Scheme
-- **Primary Blue**: #2563eb (Professional, trustworthy)
-- **Gradient Background**: Purple-blue gradient for hero section
-- **Neutral Grays**: Clean, modern text colors
+## 🎨 Design Highlights
 
-### Typography
-- **Font**: Inter (Google Fonts) - Modern, readable
-- **Hierarchy**: Clear heading structure for easy scanning
+- **Gradient Backgrounds**: Modern color schemes
+- **Smooth Animations**: Floating elements and hover effects
+- **3D Elements**: Rotating window and door models
+- **Professional Typography**: Clean, readable fonts
+- **Mobile-First**: Responsive design approach
 
-### Animations
-- **Smooth Scrolling**: Between sections
-- **Fade-in Effects**: Elements appear as you scroll
-- **Hover Effects**: Interactive feedback on buttons and cards
-- **Loading States**: Visual feedback for form submissions
+## 📧 Contact Form Features
 
-## 📱 Responsive Breakpoints
+- **Step-by-step Process**: User-friendly form navigation
+- **Product Selection**: Multiple window and door options
+- **Price Calculation**: Real-time cost estimation
+- **PDF Generation**: Professional quote documents
+- **Email Integration**: Automatic quote delivery
 
-- **Desktop**: 1200px and above
-- **Tablet**: 768px - 1199px
-- **Mobile**: Below 768px
+## 🔧 Setup Instructions
 
-## 🔧 Customization
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/OknaStran.git
+   ```
 
-### Updating Prices
-Edit the `pricingData` object in `script.js` to modify:
-- Base prices for different window types
-- Glass type multipliers
-- Frame color multipliers
-- Installation costs
+2. Open `index.html` in your browser
 
-### Changing Content
-- **Company Information**: Update contact details in `index.html`
-- **Text Content**: All Slovenian text can be modified in `index.html`
-- **Styling**: Colors and layout can be customized in `styles.css`
+3. For local development, use a local server:
+   ```bash
+   python -m http.server 8000
+   # or
+   npx serve .
+   ```
 
-### Adding Features
-The modular structure makes it easy to add:
-- Additional product categories
-- More calculator options
-- Image galleries
-- Customer testimonials
-
-## 🌐 Browser Support
-
-- **Chrome**: 60+
-- **Firefox**: 55+
-- **Safari**: 12+
-- **Edge**: 79+
-
-## 📞 Contact Information
-
-The website includes placeholder contact information that should be updated with real business details:
-
-- **Phone**: +386 1 234 5678
-- **Email**: info@mvz-pvcoknainvrata.si
-- **Address**: Ljubljanska cesta 123, 1000 Ljubljana, Slovenia
-- **Working Hours**: Monday-Friday 8:00-17:00, Saturday 8:00-12:00
-
-## 🚀 Deployment
-
-### Static Hosting
-This website can be deployed on any static hosting service:
-- **Netlify**: Drag and drop the folder
-- **Vercel**: Connect your GitHub repository
-- **GitHub Pages**: Push to a GitHub repository
-- **Traditional Web Hosting**: Upload files via FTP
-
-### Custom Domain
-Update the domain name in:
-- `index.html` title and meta tags
-- Contact form email addresses
-- Footer information
-
-## 📈 SEO Features
-
-- **Semantic HTML**: Proper heading structure and semantic elements
-- **Meta Tags**: Optimized for search engines
-- **Fast Loading**: Optimized CSS and JavaScript
-- **Mobile-Friendly**: Responsive design for mobile search rankings
-
-## 🔒 Security
-
-- **Client-Side Only**: No server-side processing required
-- **Form Validation**: Client-side validation for better UX
-- **No External Dependencies**: Only uses CDN for fonts and icons
-
-## 📝 License
+## 📄 License
 
 This project is created for MVZ-PVCOKNAINVRATA.SI. All rights reserved.
 
+## 🤝 Contributing
+
+This is a private project for a specific client. For questions or support, please contact the development team.
+
 ---
 
-**Built with ❤️ for the Slovenian PVC windows and doors industry** 
+**Built with ❤️ for the Slovenian market** 
