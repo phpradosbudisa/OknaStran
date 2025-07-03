@@ -1,4 +1,4 @@
-// Simplified and more informative JavaScript for Okna Stran
+// Simplified and more informative JavaScript for MVZ - PVC okna in vrata
 
 // Global variables
 let items = [];
@@ -76,11 +76,11 @@ function setupFormAutoSave() {
     setInterval(() => {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
-        localStorage.setItem('oknaStranFormData', JSON.stringify(data));
+        localStorage.setItem('mvzFormData', JSON.stringify(data));
     }, 5000);
     
     // Restore form data on page load
-    const savedData = localStorage.getItem('oknaStranFormData');
+    const savedData = localStorage.getItem('mvzFormData');
     if (savedData) {
         try {
             const data = JSON.parse(savedData);
@@ -621,12 +621,12 @@ function generatePDF() {
     // Header
     doc.setFontSize(20);
     doc.setFont('helvetica', 'bold');
-    doc.text('Okna Stran d.o.o.', 20, 30);
+    doc.text('MVZ - PVC okna in vrata', 20, 30);
     
     doc.setFontSize(12);
     doc.setFont('helvetica', 'normal');
-    doc.text('123 Glavna ulica, Ljubljana', 20, 40);
-    doc.text('Tel: +386 31 123 456 | Email: info@oknastran.si', 20, 50);
+    doc.text('Okrog 5, 3232 Ponikva', 20, 40);
+    doc.text('Tel: 070 774 343, 070 662 211', 20, 50);
     
     // Title
     doc.setFontSize(18);
@@ -696,10 +696,11 @@ function generatePDF() {
     doc.setFontSize(10);
     doc.setFont('helvetica', 'normal');
     doc.text('Ponudba velja 30 dni od datuma izdaje.', 20, 280);
-    doc.text('Vključuje montažo in 10-letno garancijo.', 20, 285);
+    doc.text('Vključuje montažo in kakovostno izvedbo.', 20, 285);
+    doc.text('Družinsko podjetje v Ponikvi - prilagodljivost, odzivnost, zanesljivost.', 20, 290);
     
     // Save PDF
-    const fileName = `ponudba_okna_stran_${new Date().toISOString().split('T')[0]}.pdf`;
+    const fileName = `ponudba_mvz_${new Date().toISOString().split('T')[0]}.pdf`;
     doc.save(fileName);
 }
 

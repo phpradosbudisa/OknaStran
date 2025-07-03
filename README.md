@@ -1,6 +1,6 @@
-# Okna Stran - PVC Windows and Doors Website
+# MVZ - PVC okna in vrata | Družinsko podjetje v Ponikvi
 
-A modern, responsive website for a Slovenian PVC windows and doors company. Built with HTML, CSS, and JavaScript.
+A modern, responsive website for a Slovenian family business specializing in PVC windows and doors. Built with HTML, CSS, and JavaScript.
 
 ## 🌟 Features
 
@@ -9,6 +9,7 @@ A modern, responsive website for a Slovenian PVC windows and doors company. Buil
 - **PDF Generation**: Automatic quote generation and email delivery
 - **Responsive Layout**: Works perfectly on all devices
 - **Slovenian Language**: Localized content for Slovenian market
+- **Product Catalog**: Comprehensive showcase of PVC profiles and systems
 
 ## 🚀 Live Demo
 
@@ -41,9 +42,23 @@ OknaStran/
 - Call-to-action buttons
 
 ### About Section
-- Company story and experience
-- Feature cards with hover effects
+- Family business story and experience
+- Feature cards highlighting flexibility, responsiveness, and reliability
 - Visual grid layout
+
+### Services Section
+- PVC windows and doors
+- PVC double-wing garage doors
+- Roller blinds and insect screens
+- On-site measurements
+- International installation services
+
+### Products Section
+- **PVC Profiles**: Salamander BluEvolution 82 MD, Salamander Brugmann 73 AD, Decco 71, Decco 83
+- **Fittings**: Winkhaus quality fittings
+- **Sliding Systems**: Tilt-sliding and HST lift-and-slide systems
+- **Aluminium Roller Shutters**: External visible, top-mounted, and flush-mounted options
+- **Aluminium Insect Screens**: Fixed drop-down, pleated, and roller screens
 
 ### Interactive Calculator
 - Multi-step form process
@@ -53,9 +68,10 @@ OknaStran/
 - Email delivery system
 
 ### Contact Section
-- Company information
+- Company information and location
 - Interactive map
-- Contact details
+- Working hours and contact details
+- Links to Bolha Shop and Primerjam Reviews
 
 ## 🎨 Design Highlights
 
@@ -72,6 +88,17 @@ OknaStran/
 - **Price Calculation**: Real-time cost estimation
 - **PDF Generation**: Professional quote documents
 - **Email Integration**: Automatic quote delivery
+
+## 🏢 Company Information
+
+**MVZ - PVC okna in vrata**
+- **Location**: Okrog 5, 3232 Ponikva, Slovenia
+- **Phone**: 070 774 343, 070 662 211
+- **Working Hours**: 
+  - Monday-Thursday: 8:00-16:00
+  - Friday: 8:00-15:00
+  - Saturday: By appointment
+- **Services**: Affordable PVC windows and doors in the Savinja region
 
 ## 🔧 Setup Instructions
 
@@ -91,7 +118,7 @@ OknaStran/
 
 ## 📄 License
 
-This project is created for MVZ-PVCOKNAINVRATA.SI. All rights reserved.
+This project is created for MVZ - PVC okna in vrata. All rights reserved.
 
 ## 🤝 Contributing
 
@@ -99,4 +126,4 @@ This is a private project for a specific client. For questions or support, pleas
 
 ---
 
-**Built with ❤️ for the Slovenian market** 
+**Built with ❤️ for the Slovenian market - Družinsko podjetje v Ponikvi** 
