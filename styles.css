@@ -210,6 +210,107 @@ p {
     font-weight: 600;
 }
 
+/* Mobile Navigation Toggle */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+    padding: 0.5rem;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary-color);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        gap: 0;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid var(--border-light);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-link {
+        padding: 1rem 2rem;
+        border-bottom: 1px solid var(--border-light);
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-link::after {
+        display: none;
+    }
+    
+    .nav-contact {
+        display: none;
+    }
+    
+    .navbar .container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-brand {
+        font-size: 1.3rem;
+    }
+    
+    .nav-brand i {
+        font-size: 1.5rem;
+    }
+    
+    .nav-toggle span {
+        width: 22px;
+        height: 2px;
+    }
+    
+    .nav-link {
+        padding: 0.875rem 1.5rem;
+    }
+}
+
 /* ===== HERO SECTION ===== */
 .hero {
     position: relative;

@@ -7,12 +7,51 @@ const totalSteps = 3;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
+    setupMobileNavigation();
     initializeApp();
     setupEventListeners();
     setupFormValidation();
     setupStepNavigation();
     updateProgress();
 });
+
+// Mobile Navigation Setup
+function setupMobileNavigation() {
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    if (navToggle && navMenu) {
+        // Toggle mobile menu
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu on window resize (if screen becomes larger)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    }
+}
 
 function initializeApp() {
     // Initialize tooltips and enhanced interactions
