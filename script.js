@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupFormValidation();
     setupStepNavigation();
     updateProgress();
+    setupScrollAnimations();
 });
 
 // Mobile Navigation Setup
@@ -821,4 +822,109 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
-} 
+}
+
+// ===== SCROLL ANIMATIONS =====
+function setupScrollAnimations() {
+    // Add animation classes to elements
+    addAnimationClasses();
+    
+    // Setup intersection observer for scroll animations
+    setupIntersectionObserver();
+    
+    // Add hover animations
+    setupHoverAnimations();
+}
+
+function addAnimationClasses() {
+    // Hero section animations
+    const heroText = document.querySelector('.hero-text');
+    const heroVisual = document.querySelector('.hero-visual-mobile');
+    const heroButtons = document.querySelector('.hero-buttons');
+    
+    if (heroText) heroText.classList.add('animate-fade-in');
+    if (heroVisual) heroVisual.classList.add('animate-scale-in');
+    if (heroButtons) heroButtons.classList.add('animate-fade-in');
+    
+    // Trust bar animations
+    const trustItems = document.querySelector('.trust-items');
+    if (trustItems) trustItems.classList.add('stagger-animation');
+    
+    // About section animations
+    const aboutVisual = document.querySelector('.about-visual');
+    const aboutText = document.querySelector('.about-text');
+    
+    if (aboutVisual) aboutVisual.classList.add('animate-on-scroll');
+    if (aboutText) aboutText.classList.add('animate-on-scroll');
+    
+    // Services animations
+    const servicesGrid = document.querySelector('.services-grid');
+    if (servicesGrid) servicesGrid.classList.add('stagger-animation');
+    
+    // Contact animations
+    const contactInfo = document.querySelector('.contact-info');
+    const contactMap = document.querySelector('.contact-map');
+    
+    if (contactInfo) contactInfo.classList.add('animate-on-scroll');
+    if (contactMap) contactMap.classList.add('animate-on-scroll');
+}
+
+function setupIntersectionObserver() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+                
+                // Add delay for stagger animations
+                if (entry.target.classList.contains('stagger-animation')) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animated');
+                    }, 200);
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all elements with animation classes
+    document.querySelectorAll('.animate-on-scroll, .stagger-animation').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+function setupHoverAnimations() {
+    // Add floating animation to hero elements
+    const floatingElements = document.querySelectorAll('.floating-window, .floating-door, .shape');
+    floatingElements.forEach(el => {
+        el.classList.add('animate-float');
+    });
+    
+    // Add pulse animation to experience badge
+    const experienceBadge = document.querySelector('.experience-badge');
+    if (experienceBadge) {
+        experienceBadge.classList.add('animate-pulse');
+    }
+    
+    // Add glow animation to hero badge
+    const heroBadge = document.querySelector('.hero-visual-mobile .hero-badge');
+    if (heroBadge) {
+        heroBadge.classList.add('animate-glow');
+    }
+}
+
+// Enhanced scroll indicator animation
+function setupScrollIndicator() {
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.classList.add('animate-bounce');
+    }
+}
+
+// Call setup functions
+document.addEventListener('DOMContentLoaded', function() {
+    setupScrollIndicator();
+}); 

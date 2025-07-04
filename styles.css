@@ -44,6 +44,152 @@
     --spacing-2xl: 4rem;
 }
 
+/* ===== ANIMATION KEYFRAMES ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+}
+
+/* ===== ANIMATION CLASSES ===== */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animate-fade-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-slide-top {
+    animation: slideInFromTop 0.8s ease-out forwards;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Stagger animations */
+.stagger-animation > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out;
+}
+
+.stagger-animation.animated > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-animation.animated > *:nth-child(1) { transition-delay: 0.1s; }
+.stagger-animation.animated > *:nth-child(2) { transition-delay: 0.2s; }
+.stagger-animation.animated > *:nth-child(3) { transition-delay: 0.3s; }
+.stagger-animation.animated > *:nth-child(4) { transition-delay: 0.4s; }
+.stagger-animation.animated > *:nth-child(5) { transition-delay: 0.5s; }
+.stagger-animation.animated > *:nth-child(6) { transition-delay: 0.6s; }
+
 /* ===== RESET & BASE STYLES ===== */
 * {
     margin: 0;
@@ -121,6 +267,7 @@ p {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
     background: #cc007a;
+    animation: pulse 0.3s ease-in-out;
 }
 
 .btn-secondary {
@@ -134,6 +281,7 @@ p {
     color: white;
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
+    animation: pulse 0.3s ease-in-out;
 }
 
 /* ===== NAVIGATION ===== */
@@ -185,6 +333,7 @@ p {
 
 .nav-link:hover {
     color: var(--primary-color);
+    transform: translateY(-1px);
 }
 
 .nav-link::after {
@@ -880,6 +1029,10 @@ p {
     60% { transform: translateX(-50%) translateY(-5px); }
 }
 
+.animate-bounce {
+    animation: bounce 2s infinite;
+}
+
 /* ===== TRUST BAR ===== */
 .trust-bar {
     background: var(--background-white);
@@ -905,7 +1058,8 @@ p {
 
 .trust-item:hover {
     background: var(--background-light);
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.02);
+    animation: glow 1s ease-in-out;
 }
 
 .trust-icon {
@@ -1111,9 +1265,10 @@ p {
 }
 
 .feature-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px) scale(1.02);
     box-shadow: var(--shadow-lg);
     border-color: var(--primary-color);
+    animation: pulse 0.5s ease-in-out;
 }
 
 .feature-icon {
@@ -1246,9 +1401,10 @@ p {
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02);
     box-shadow: var(--shadow-lg);
     border-color: var(--primary-color);
+    animation: pulse 0.5s ease-in-out;
 }
 
 .service-icon {
@@ -1903,8 +2059,9 @@ p {
 }
 
 .contact-item:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.02);
     box-shadow: var(--shadow-md);
+    animation: glow 1s ease-in-out;
 }
 
 .contact-icon {
