@@ -1008,4 +1008,15 @@ function toggleProjects() {
             });
         }, 400);
     }
+}
+
+// ===== SMOOTH SCROLL TO SECTION =====
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
 } 
