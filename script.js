@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
     setupStepNavigation();
     updateProgress();
     setupScrollAnimations();
+    
+    // Setup projects toggle immediately
+    setTimeout(() => {
+        setupProjectsToggle();
+    }, 100);
 });
 
 // Mobile Navigation Setup
@@ -927,4 +932,80 @@ function setupScrollIndicator() {
 // Call setup functions
 document.addEventListener('DOMContentLoaded', function() {
     setupScrollIndicator();
-}); 
+});
+
+// ===== PROJECTS TOGGLE FUNCTIONALITY =====
+function setupProjectsToggle() {
+    const projectsHidden = document.getElementById('projectsHidden');
+    if (!projectsHidden) {
+        console.log('Projects hidden container not found');
+        return;
+    }
+    
+    // Initially hide the projects-hidden container
+    projectsHidden.style.display = 'none';
+    
+    // Update button text to show count
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    if (showMoreBtn) {
+        const btnText = showMoreBtn.querySelector('.btn-text');
+        const hiddenProjects = projectsHidden.querySelectorAll('.project-card');
+        btnText.textContent = `Prikaži več projektov (${hiddenProjects.length})`;
+        
+        // Ensure button is in correct state
+        showMoreBtn.classList.remove('expanded');
+    }
+    
+    console.log('Projects toggle setup completed');
+}
+
+function toggleProjects() {
+    const projectsHidden = document.getElementById('projectsHidden');
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    const btnText = showMoreBtn.querySelector('.btn-text');
+    const chevronIcon = document.getElementById('chevronIcon');
+    
+    const isExpanded = showMoreBtn.classList.contains('expanded');
+    const hiddenProjects = projectsHidden.querySelectorAll('.project-card');
+    
+    console.log(`Toggle projects: isExpanded=${isExpanded}, hidden=${hiddenProjects.length}`);
+    
+    if (!isExpanded) {
+        // Show hidden projects
+        console.log('Showing hidden projects');
+        projectsHidden.style.display = 'grid';
+        projectsHidden.classList.add('show');
+        
+        // Update button
+        btnText.textContent = 'Prikaži manj projektov';
+        showMoreBtn.classList.add('expanded');
+        
+        // Smooth scroll to show more button after animation
+        setTimeout(() => {
+            showMoreBtn.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+        }, 800);
+        
+    } else {
+        // Hide projects
+        console.log('Hiding projects');
+        projectsHidden.classList.remove('show');
+        
+        setTimeout(() => {
+            projectsHidden.style.display = 'none';
+        }, 300);
+        
+        // Update button
+        btnText.textContent = `Prikaži več projektov (${hiddenProjects.length})`;
+        showMoreBtn.classList.remove('expanded');
+        
+        // Smooth scroll to projects section
+        setTimeout(() => {
+            document.querySelector('#projects').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }, 400);
+    }
+} 
