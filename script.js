@@ -4,6 +4,7 @@
 let items = [];
 let currentStep = 1;
 const totalSteps = 3;
+let slideshowRunning = false;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -14,11 +15,21 @@ document.addEventListener('DOMContentLoaded', function() {
     setupStepNavigation();
     updateProgress();
     setupScrollAnimations();
+    setupSlideshow();
     
     // Setup projects toggle immediately
     setTimeout(() => {
         setupProjectsToggle();
     }, 100);
+    
+    // Start slideshow on first user interaction (Safari-friendly)
+    document.addEventListener('click', function startSlideshowOnInteraction() {
+        if (!slideshowRunning) {
+            console.log('Starting slideshow on user interaction...');
+            setupSlideshow();
+        }
+        document.removeEventListener('click', startSlideshowOnInteraction);
+    }, { once: true });
 });
 
 // Mobile Navigation Setup
@@ -1019,4 +1030,99 @@ function scrollToSection(sectionId) {
             block: 'start'
         });
     }
-} 
+}
+
+// ===== SLIDESHOW FUNCTIONALITY =====
+let slideshowInterval = null;
+let currentImageIndex = 0;
+let slideshowTimeout = null;
+
+function setupSlideshow() {
+    console.log('=== SLIDESHOW SETUP STARTED ===');
+    
+    const slideshowImages = document.querySelectorAll('.slideshow-image');
+    
+    console.log(`Found ${slideshowImages.length} slideshow images`);
+    
+    if (slideshowImages.length === 0) {
+        console.log('No slideshow images found');
+        return;
+    }
+    
+    // Log all found images
+    slideshowImages.forEach((img, index) => {
+        console.log(`Image ${index}: ${img.src}`);
+    });
+    
+    // Function to show next image
+    function nextImage() {
+        console.log(`=== SLIDESHOW CHANGE ===`);
+        console.log(`Changing from image ${currentImageIndex} to ${(currentImageIndex + 1) % slideshowImages.length}`);
+        
+        // Remove active class from current image
+        slideshowImages[currentImageIndex].classList.remove('active');
+        console.log(`Removed active from image ${currentImageIndex}`);
+        
+        // Move to next image
+        currentImageIndex = (currentImageIndex + 1) % slideshowImages.length;
+        
+        // Add active class to new image
+        slideshowImages[currentImageIndex].classList.add('active');
+        console.log(`Added active to image ${currentImageIndex}: ${slideshowImages[currentImageIndex].src}`);
+        
+        // Schedule next change using setTimeout (better for Safari)
+        slideshowTimeout = setTimeout(nextImage, 2000);
+    }
+    
+    // Clear any existing timers
+    if (slideshowInterval) {
+        clearInterval(slideshowInterval);
+    }
+    if (slideshowTimeout) {
+        clearTimeout(slideshowTimeout);
+    }
+    
+    // Start the slideshow using setTimeout (Safari-friendly)
+    slideshowTimeout = setTimeout(nextImage, 2000);
+    slideshowRunning = true;
+    console.log('Slideshow timer started - changing every 2 seconds (Safari-friendly)');
+    console.log(`Slideshow running: ${slideshowRunning}`);
+    
+    console.log(`Slideshow initialized with ${slideshowImages.length} images`);
+    console.log(`First image: ${slideshowImages[0].src}`);
+}
+
+// Global test function to check slideshow status
+function checkSlideshowStatus() {
+    console.log('=== SLIDESHOW STATUS CHECK ===');
+    console.log(`Slideshow running: ${slideshowRunning}`);
+    console.log(`Current image index: ${currentImageIndex}`);
+    console.log(`Interval ID: ${slideshowInterval}`);
+    const slideshowImages = document.querySelectorAll('.slideshow-image');
+    console.log(`Found ${slideshowImages.length} slideshow images`);
+    const activeImage = document.querySelector('.slideshow-image.active');
+    if (activeImage) {
+        console.log(`Active image: ${activeImage.src}`);
+    } else {
+        console.log('No active image found');
+    }
+}
+
+// Manual trigger function
+function manualNextImage() {
+    console.log('=== MANUAL TRIGGER ===');
+    const slideshowImages = document.querySelectorAll('.slideshow-image');
+    
+    // Remove active from current
+    slideshowImages[currentImageIndex].classList.remove('active');
+    console.log(`Removed active from image ${currentImageIndex}`);
+    
+    // Move to next
+    currentImageIndex = (currentImageIndex + 1) % slideshowImages.length;
+    
+    // Add active to new
+    slideshowImages[currentImageIndex].classList.add('active');
+    console.log(`Added active to image ${currentImageIndex}: ${slideshowImages[currentImageIndex].src}`);
+}
+
+ 

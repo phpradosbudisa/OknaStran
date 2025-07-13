@@ -774,36 +774,113 @@ p {
 
 .hero-showcase {
     position: relative;
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 350px;
     perspective: 1000px;
-}
-
-.showcase-window,
-.showcase-door {
-    position: absolute;
-    width: 120px;
-    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .showcase-window {
-    top: 0;
-    left: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
     animation: windowRotate 10s ease-in-out infinite;
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.showcase-window img {
+.showcase-window::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    z-index: 1;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Slideshow functionality */
+.slideshow-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    filter: brightness(1.1) contrast(1.1);
+    z-index: 1;
 }
 
-.showcase-window:hover img {
-    transform: scale(1.05);
+.slideshow-image.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Safari-friendly slideshow animation */
+@keyframes slideshowFade {
+    0%, 20% { opacity: 1; }
+    25%, 95% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.slideshow-image:nth-child(1) { animation: slideshowFade 12s infinite; }
+.slideshow-image:nth-child(2) { animation: slideshowFade 12s infinite 2s; }
+.slideshow-image:nth-child(3) { animation: slideshowFade 12s infinite 4s; }
+.slideshow-image:nth-child(4) { animation: slideshowFade 12s infinite 6s; }
+.slideshow-image:nth-child(5) { animation: slideshowFade 12s infinite 8s; }
+.slideshow-image:nth-child(6) { animation: slideshowFade 12s infinite 10s; }
+
+
+
+/* Regular showcase window image (fallback) */
+.showcase-window img:not(.slideshow-image) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: brightness(1.1) contrast(1.1);
+}
+
+.showcase-window:hover {
+    transform: perspective(1000px) rotateY(-2deg) rotateX(2deg) scale(1.02);
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.showcase-window:hover img:not(.slideshow-image) {
+    transform: scale(1.08);
+    filter: brightness(1.2) contrast(1.15);
+}
+
+.showcase-window:hover .slideshow-image.active {
+    filter: brightness(1.2) contrast(1.15);
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(100%);
+    }
 }
 
 .showcase-door {
@@ -878,14 +955,13 @@ p {
     }
     
     .hero-showcase {
-        width: 350px;
-        height: 350px;
+        width: 450px;
+        height: 450px;
     }
     
-    .showcase-window,
-    .showcase-door {
-        width: 175px;
-        height: 175px;
+    .showcase-window {
+        width: 100%;
+        height: 100%;
     }
     
     .window-preview,
@@ -921,14 +997,13 @@ p {
     }
     
     .hero-showcase {
-        width: 400px;
-        height: 400px;
+        width: 500px;
+        height: 500px;
     }
     
-    .showcase-window,
-    .showcase-door {
-        width: 200px;
-        height: 200px;
+    .showcase-window {
+        width: 100%;
+        height: 100%;
     }
     
     .shape-1 {
